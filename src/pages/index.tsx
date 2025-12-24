@@ -536,7 +536,7 @@ export default function Portfolio() {
               <p className="text-[var(--sweet-text-muted)] mt-2">Software Engineer & JavaScript Enthusiast</p>
             </div>
 
-            <div className="flex space-x-8">
+            <div className="flex space-x-8 flex-wrap items-center just-center">
               {navItems.map((item) => (
                 <a
                   key={item.href}
