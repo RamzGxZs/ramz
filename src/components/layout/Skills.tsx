@@ -1,12 +1,14 @@
+"use client"
+
 import { useScrollAnimation } from "@/hooks/useScrollAnimation"
 
 const skills = [
-  { name: "Frontend Development", level: 95, icon: "🌐", description: "React, Next.js, TypeScript", highlight: true },
-  { name: "Backend Development", level: 85, icon: "⚙️", description: "Node.js, Express, APIs", highlight: false },
-  { name: "Mobile App Development", level: 80, icon: "📱", description: "React Native, Flutter", highlight: false },
-  { name: "Web Design", level: 70, icon: "🎨", description: "UI/UX, Figma, Tailwind", highlight: false },
-  { name: "SEO Optimization", level: 85, icon: "🔍", description: "Technical SEO, Analytics", highlight: false },
-  { name: "English & ID", level: 95, icon: "🗣️", description: "Fluent Communication", highlight: false },
+  { name: "Frontend Development", level: 95, icon: "\u{1F310}", description: "React, Next.js, TypeScript", highlight: true },
+  { name: "Backend Development", level: 85, icon: "\u2699\uFE0F", description: "Node.js, Express, APIs", highlight: false },
+  { name: "Mobile App Development", level: 80, icon: "\u{1F4F1}", description: "React Native, Flutter", highlight: false },
+  { name: "Web Design", level: 70, icon: "\u{1F3A8}", description: "UI/UX, Figma, Tailwind", highlight: false },
+  { name: "SEO Optimization", level: 85, icon: "\u{1F50D}", description: "Technical SEO, Analytics", highlight: false },
+  { name: "English & ID", level: 95, icon: "\u{1F5E3}\uFE0F", description: "Fluent Communication", highlight: false },
 ]
 
 function SkillCard({ skill, index }: { skill: (typeof skills)[0]; index: number }) {
@@ -22,15 +24,13 @@ function SkillCard({ skill, index }: { skill: (typeof skills)[0]; index: number 
     >
       <div className={`h-full rounded-2xl p-6 md:p-8 group cursor-default relative overflow-hidden transition-all duration-300 ${
         skill.highlight
-          ? "bg-[var(--ember)] text-white"
-          : "bg-[var(--charcoal)] border border-[var(--slate)]/40 hover:border-[var(--ember)]/30"
+				? "bg-white/[0.03] backdrop-blur-xs border border-white/[0.08] hover:border-[var(--ember)]/30"
+          : "bg-white/[0.03] backdrop-blur-xs border border-white/[0.08] hover:border-[var(--ember)]/30"
       }`}>
-        {/* Icon */}
-        <div className={`text-3xl mb-4 transition-transform duration-300 group-hover:scale-110 ${
+        <div className={`text-3xl mb-4 transition-transform duration-300  ${
           skill.highlight ? "opacity-90" : ""
         }`}>{skill.icon}</div>
 
-        {/* Skill name */}
         <h3 className={`text-lg font-semibold mb-1 ${
           skill.highlight ? "text-white" : "text-[var(--cream)]"
         }`}>{skill.name}</h3>
@@ -38,9 +38,8 @@ function SkillCard({ skill, index }: { skill: (typeof skills)[0]; index: number 
           skill.highlight ? "text-white/70" : "text-[var(--ash)]"
         }`}>{skill.description}</p>
 
-        {/* Progress bar */}
         <div className={`w-full rounded-full h-1.5 overflow-hidden ${
-          skill.highlight ? "bg-white/20" : "bg-[var(--obsidian)]"
+          skill.highlight ? "bg-white/20" : "bg-white/[0.06]"
         }`}>
           <div
             className="h-full rounded-full transition-all duration-1000 ease-out"
@@ -63,9 +62,8 @@ export function Skills() {
   const { ref: headerRef, inView: headerInView } = useScrollAnimation({ threshold: 0.1 })
 
   return (
-    <section id="skills" className="section-padding bg-[var(--obsidian-light)]">
+    <section id="skills" className="section-padding section-blur">
       <div className="container mx-auto px-6">
-        {/* Section header */}
         <div
           ref={headerRef}
           className={`text-center mb-16 transition-all duration-700 ${
@@ -76,17 +74,13 @@ export function Skills() {
           <h2 className="text-heading text-[var(--cream)]">Skills</h2>
         </div>
 
-        {/* Custom grid layout */}
         <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-4">
-          {/* Row 1: Frontend (large) + Backend */}
           <div className="md:col-span-2">
             <SkillCard skill={skills[0]} index={0} />
           </div>
           <div>
             <SkillCard skill={skills[1]} index={1} />
           </div>
-
-          {/* Row 2: Mobile + Web Design + SEO */}
           <div>
             <SkillCard skill={skills[2]} index={2} />
           </div>
@@ -96,8 +90,6 @@ export function Skills() {
           <div>
             <SkillCard skill={skills[4]} index={4} />
           </div>
-
-          {/* Row 3: Languages (full width) */}
           <div className="md:col-span-3">
             <SkillCard skill={skills[5]} index={5} />
           </div>

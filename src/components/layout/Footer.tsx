@@ -1,3 +1,5 @@
+"use client"
+
 import { Github, Linkedin } from "lucide-react"
 import Link from "next/link"
 import { useSmoothScroll } from "@/hooks/useScrollAnimation"
@@ -12,10 +14,9 @@ export function Footer() {
   const { scrollTo } = useSmoothScroll()
 
   return (
-    <footer className="bg-[var(--obsidian)] text-[var(--cream)] py-16 border-t border-[var(--slate)]/20">
+    <footer className="text-[var(--cream)] py-16 border-t border-white/5">
       <div className="container mx-auto px-6">
         <div className="flex flex-col md:flex-row justify-between items-center gap-8">
-          {/* Brand */}
           <div className="text-center md:text-left">
             <button
               onClick={() => scrollTo("hero")}
@@ -26,8 +27,7 @@ export function Footer() {
             <p className="text-[var(--ash)] mt-2">Software Engineer & JavaScript Enthusiast</p>
           </div>
 
-          {/* Navigation */}
-          <nav className="flex flex-wrap items-center justify-center gap-6">
+          <nav className="flex flex-wrap items-center justify-center gap-6" aria-label="Footer navigation">
             {NAV_ITEMS.map((item) => (
               <button
                 key={item.href}
@@ -41,7 +41,6 @@ export function Footer() {
           </nav>
         </div>
 
-        {/* Bottom bar */}
         <div className="border-t border-[var(--slate)]/20 mt-10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-[var(--ash)] text-sm">
             &copy; {new Date().getFullYear()} Moch. Ramzi Daffa Putra. All rights reserved.

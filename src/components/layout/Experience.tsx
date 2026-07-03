@@ -1,3 +1,5 @@
+"use client"
+
 import { useScrollAnimation } from "@/hooks/useScrollAnimation"
 import { Badge } from "@/components/ui/badge"
 import { ChevronRight } from "lucide-react"
@@ -36,11 +38,9 @@ function ExperienceCard({ experience, index }: { experience: (typeof experiences
       }`}
       style={{ animationDelay: `${index * 200}ms` }}
     >
-      <div className="glass-subtle rounded-3xl p-8 hover-lift group relative overflow-hidden">
-        {/* Top accent line */}
+			<div className="backdrop-blur-xs bg-white/[0.03] rounded-3xl p-8 hover-lift group relative overflow-hidden">
         <div className="absolute top-0 left-0 right-0 h-1 bg-[var(--ember)]" />
 
-        {/* Header */}
         <div className="flex flex-col md:flex-row md:items-center justify-between mb-6">
           <div>
             <h3 className="text-xl font-bold text-[var(--cream)] mb-1">{experience.title}</h3>
@@ -54,7 +54,6 @@ function ExperienceCard({ experience, index }: { experience: (typeof experiences
           </Badge>
         </div>
 
-        {/* Highlights */}
         <ul className="space-y-3">
           {experience.highlights.map((highlight, i) => (
             <li key={i} className="flex items-start group/item">
@@ -74,9 +73,8 @@ export function Experience() {
   const { ref: headerRef, inView: headerInView } = useScrollAnimation({ threshold: 0.1 })
 
   return (
-    <section id="experience" className="section-padding bg-[var(--obsidian)]">
+    <section id="experience" className="section-padding section-blur">
       <div className="container mx-auto px-6">
-        {/* Section header */}
         <div
           ref={headerRef}
           className={`text-center mb-20 transition-all duration-700 ${
@@ -87,7 +85,6 @@ export function Experience() {
           <h2 className="text-heading text-[var(--cream)]">Experience</h2>
         </div>
 
-        {/* Timeline */}
         <div className="timeline max-w-3xl mx-auto">
           {experiences.map((experience, index) => (
             <ExperienceCard key={index} experience={experience} index={index} />

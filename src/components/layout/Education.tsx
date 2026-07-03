@@ -1,3 +1,5 @@
+"use client"
+
 import { useScrollAnimation } from "@/hooks/useScrollAnimation"
 import { Badge } from "@/components/ui/badge"
 
@@ -27,11 +29,9 @@ function EducationCard({ item, index }: { item: (typeof education)[0]; index: nu
       }`}
       style={{ animationDelay: `${index * 200}ms` }}
     >
-      <div className="glass-subtle rounded-3xl p-8 hover-lift group relative overflow-hidden">
-        {/* Top accent line */}
+			<div className="backdrop-blur-xs bg-white/[0.03] rounded-3xl p-8 hover-lift group relative overflow-hidden">
         <div className="absolute top-0 left-0 right-0 h-1 bg-[var(--ember)]" />
 
-        {/* Header */}
         <div className="flex flex-col md:flex-row md:items-center justify-between mb-3">
           <h3 className="text-xl font-bold text-[var(--cream)]">{item.school}</h3>
           <Badge
@@ -59,9 +59,8 @@ export function Education() {
   const { ref: headerRef, inView: headerInView } = useScrollAnimation({ threshold: 0.1 })
 
   return (
-    <section id="education" className="section-padding bg-[var(--obsidian-light)]">
+    <section id="education" className="section-padding section-blur">
       <div className="container mx-auto px-6">
-        {/* Section header */}
         <div
           ref={headerRef}
           className={`text-center mb-20 transition-all duration-700 ${
@@ -72,7 +71,6 @@ export function Education() {
           <h2 className="text-heading text-[var(--cream)]">Education</h2>
         </div>
 
-        {/* Timeline */}
         <div className="timeline max-w-3xl mx-auto">
           {education.map((item, index) => (
             <EducationCard key={index} item={item} index={index} />

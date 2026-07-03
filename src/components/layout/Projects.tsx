@@ -1,6 +1,9 @@
+"use client"
+
 import { useScrollAnimation } from "@/hooks/useScrollAnimation"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
+import { Card } from "@/components/ui/reactbits-wrapper"
 import { ExternalLink } from "lucide-react"
 import Image from "next/image"
 
@@ -33,8 +36,6 @@ const projects = [
 
 function ProjectCard({ project, index }: { project: (typeof projects)[0]; index: number }) {
   const { ref, inView } = useScrollAnimation({ threshold: 0.1 })
-
-  // Alternate heights for masonry effect
   const heights = ["h-64", "h-80", "h-72"]
   const height = heights[index % heights.length]
 
@@ -46,9 +47,8 @@ function ProjectCard({ project, index }: { project: (typeof projects)[0]; index:
       }`}
       style={{ animationDelay: `${index * 150}ms` }}
     >
-      <div className="glass-subtle rounded-3xl overflow-hidden hover-lift group relative">
-        {/* Image container */}
-        <div className={`${height} overflow-hidden bg-[var(--charcoal)] relative`}>
+      <Card>
+        <div className={`${height} overflow-hidden bg-white/[0.03] backdrop-blur-sm relative`}>
           <Image
             src={project.image || "/placeholder.svg"}
             alt={project.title}
@@ -56,23 +56,19 @@ function ProjectCard({ project, index }: { project: (typeof projects)[0]; index:
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
           />
-          {/* Image overlay */}
-          <div className="absolute inset-0 bg-[var(--obsidian)]/70 opacity-60 transition-opacity duration-500 group-hover:opacity-80" />
+          <div className="absolute inset-0 bg-black/50 opacity-60 transition-opacity duration-500 group-hover:opacity-80" />
 
-          {/* Hover action */}
           <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500">
             <Button
               variant="outline"
               size="sm"
-              onClick={() => window.open(project.link)}
-              className="border-[var(--ember)] text-[var(--ember)] bg-[var(--obsidian)]/80 backdrop-blur-sm hover:bg-[var(--ember)] hover:text-[var(--obsidian)]"
+              onClick={() => window.open(project.link, "_blank", "noopener,noreferrer")}
             >
               <ExternalLink className="mr-2 h-4 w-4" /> View Project
             </Button>
           </div>
         </div>
 
-        {/* Content */}
         <div className="p-6">
           <h3 className="font-bold text-xl mb-2 text-[var(--cream)] group-hover:text-[var(--ember)] transition-colors duration-300">
             {project.title}
@@ -85,14 +81,14 @@ function ProjectCard({ project, index }: { project: (typeof projects)[0]; index:
               <Badge
                 key={i}
                 variant="secondary"
-                className="bg-[var(--charcoal)] text-[var(--cream-muted)] border border-[var(--slate)]/50 hover:border-[var(--ember)]/50 hover:text-[var(--ember)] transition-all duration-300"
+                className="bg-white/[0.05] backdrop-blur-sm text-[var(--cream-muted)] border border-white/[0.08] hover:border-[var(--ember)]/50 hover:text-[var(--ember)] transition-all duration-300"
               >
                 {tag}
               </Badge>
             ))}
           </div>
         </div>
-      </div>
+      </Card>
     </div>
   )
 }
@@ -101,9 +97,8 @@ export function Projects() {
   const { ref: headerRef, inView: headerInView } = useScrollAnimation({ threshold: 0.1 })
 
   return (
-    <section id="projects" className="section-padding bg-[var(--obsidian)]">
+    <section id="projects" className="section-padding section-blur">
       <div className="container mx-auto px-6">
-        {/* Section header */}
         <div
           ref={headerRef}
           className={`text-center mb-20 transition-all duration-700 ${
@@ -114,19 +109,18 @@ export function Projects() {
           <h2 className="text-heading text-[var(--cream)]">Projects</h2>
         </div>
 
-        {/* Masonry grid */}
         <div className="masonry-grid max-w-6xl mx-auto">
           {projects.map((project, index) => (
             <ProjectCard key={index} project={project} index={index} />
           ))}
         </div>
 
-        {/* View all button */}
         <div className="text-center mt-16">
           <Button
+					className="backdrop-blur-xs"
             variant="outline"
-            onClick={() => window.open("https://github.com/RamzGxZs")}
-            className="border-[var(--slate)] bg-transparent text-[var(--cream)] hover:bg-[var(--charcoal)] hover:border-[var(--ember)]/30 px-8 py-6 text-base font-semibold transition-all duration-300 magnetic-hover"
+            size="lg"
+            onClick={() => window.open("https://github.com/RamzGxZs", "_blank", "noopener,noreferrer")}
           >
             View All Projects
           </Button>

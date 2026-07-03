@@ -1,3 +1,5 @@
+"use client"
+
 import { useScrollAnimation } from "@/hooks/useScrollAnimation"
 
 export function About() {
@@ -5,9 +7,8 @@ export function About() {
   const { ref: contentRef, inView: contentInView } = useScrollAnimation({ threshold: 0.1 })
 
   return (
-    <section id="about" className="section-padding bg-[var(--obsidian)]">
+    <section id="about" className="section-padding section-blur">
       <div className="container mx-auto px-6">
-        {/* Section header */}
         <div
           ref={headerRef}
           className={`text-center mb-20 transition-all duration-700 ${
@@ -18,15 +19,13 @@ export function About() {
           <h2 className="text-heading text-[var(--cream)]">About Me</h2>
         </div>
 
-        {/* Content */}
         <div
           ref={contentRef}
           className={`max-w-3xl mx-auto transition-all duration-700 delay-200 ${
             contentInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"
           }`}
         >
-          <div className="glass-subtle rounded-3xl p-8 md:p-12 relative overflow-hidden">
-            {/* Decorative accent */}
+					<div className="bg-white/[0.05] rounded-3xl p-8 md:p-12 relative overflow-hidden backdrop-blur-xs">
             <div className="absolute top-0 left-0 w-1 h-full bg-[var(--ember)]" />
 
             <p className="text-body-lg text-[var(--cream-muted)] leading-relaxed pl-6">
@@ -37,8 +36,7 @@ export function About() {
               a good user experience.
             </p>
 
-            {/* Stats row */}
-            <div className="grid grid-cols-3 gap-6 mt-10 pl-6 border-t border-[var(--slate)]/30 pt-8">
+            <div className="grid grid-cols-3 gap-6 mt-10 pl-6 border-t border-white/10 pt-8">
               <div>
                 <div className="text-3xl font-bold text-[var(--ember)] mb-1">10+</div>
                 <div className="text-sm text-[var(--ash)]">Projects Completed</div>
