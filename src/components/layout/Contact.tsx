@@ -2,36 +2,32 @@ import { useScrollAnimation } from "@/hooks/useScrollAnimation"
 import { Button } from "@/components/ui/button"
 import { Mail, Phone, MapPin, Github, Linkedin, Twitter } from "lucide-react"
 import Link from "next/link"
+import { CONTACT, SOCIALS } from "@/lib/constants"
 
 const contactInfo = [
   {
     icon: Mail,
     label: "Email",
-    value: "ranzdaffa32@gmail.com",
-    href: "mailto:ranzdaffa32@gmail.com",
+    value: CONTACT.email,
+    href: `mailto:${CONTACT.email}`,
   },
   {
     icon: Phone,
     label: "Phone",
-    value: "+62 8956-2104-8269",
-    href: "tel:+62895621048269",
+    value: CONTACT.phone,
+    href: `tel:${CONTACT.phoneRaw}`,
   },
   {
     icon: MapPin,
     label: "Location",
-    value: "Jln. Raya Tebu Indah, Krajan 1 Wingrinrejo - Gambiran",
+    value: CONTACT.location,
     href: null,
   },
 ]
 
 const socialLinks = [
-  { icon: Github, href: "https://github.com/RamzGxZs", label: "GitHub" },
-  {
-    icon: Linkedin,
-    href: "https://www.linkedin.com/in/moch-ramzi-daffa-putra-13738922a/",
-    label: "LinkedIn",
-  },
-  { icon: Twitter, href: "#", label: "Twitter" },
+  { icon: Github, href: SOCIALS.github, label: "GitHub" },
+  { icon: Linkedin, href: SOCIALS.linkedin, label: "LinkedIn" },
 ]
 
 export function Contact() {
@@ -124,25 +120,34 @@ export function Contact() {
               {/* Right: Contact form */}
               <div className="space-y-5">
                 <h3 className="text-subheading text-[var(--cream)]">Send a Message</h3>
-                <form className="space-y-4" action="mailto:ranzdaffa32@gmail.com">
+                <form className="space-y-4" action={`mailto:${CONTACT.email}`} method="post" encType="text/plain">
                   <div>
                     <input
                       type="text"
+                      name="name"
                       placeholder="Your Name"
+                      aria-label="Your Name"
+                      required
                       className="input-premium"
                     />
                   </div>
                   <div>
                     <input
                       type="email"
+                      name="email"
                       placeholder="Your Email"
+                      aria-label="Your Email"
+                      required
                       className="input-premium"
                     />
                   </div>
                   <div>
                     <textarea
+                      name="message"
                       placeholder="Your Message"
                       rows={4}
+                      aria-label="Your Message"
+                      required
                       className="input-premium resize-none"
                     />
                   </div>

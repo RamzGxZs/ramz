@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button"
 import { Github, Linkedin, ChevronRight } from "lucide-react"
 import Link from "next/link"
 import { useScrollAnimation } from "@/hooks/useScrollAnimation"
+import { SOCIALS } from "@/lib/constants"
 
 export function Hero() {
   const [isLoaded, setIsLoaded] = useState(false)
@@ -78,7 +79,7 @@ export function Hero() {
           >
             <div className="flex flex-col sm:flex-row gap-4">
               <Button
-                onClick={() => window.open("https://api.whatsapp.com/send?phone=62895621048269")}
+                onClick={() => window.open(SOCIALS.whatsapp)}
                 className="bg-[var(--ember)] hover:bg-[var(--copper)] text-white border-0 px-8 py-6 text-base font-semibold transition-all duration-300 magnetic-hover"
               >
                 Hire Me
@@ -103,14 +104,14 @@ export function Hero() {
             }`}
           >
             <Link
-              href="https://github.com/RamzGxZs"
+              href={SOCIALS.github}
               target="_blank"
               className="glass-subtle p-4 rounded-xl hover-lift hover:text-[var(--ember)] transition-all duration-300 group"
             >
               <Github className="h-5 w-5 text-[var(--cream-muted)] group-hover:text-[var(--ember)] transition-colors duration-300" />
             </Link>
             <Link
-              href="https://www.linkedin.com/in/moch-ramzi-daffa-putra-13738922a/"
+              href={SOCIALS.linkedin}
               target="_blank"
               className="glass-subtle p-4 rounded-xl hover-lift hover:text-[var(--ember)] transition-all duration-300 group"
             >

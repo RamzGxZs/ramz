@@ -2,6 +2,7 @@ import { useScrollAnimation } from "@/hooks/useScrollAnimation"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { ExternalLink } from "lucide-react"
+import Image from "next/image"
 
 const projects = [
   {
@@ -48,10 +49,12 @@ function ProjectCard({ project, index }: { project: (typeof projects)[0]; index:
       <div className="glass-subtle rounded-3xl overflow-hidden hover-lift group relative">
         {/* Image container */}
         <div className={`${height} overflow-hidden bg-[var(--charcoal)] relative`}>
-          <img
+          <Image
             src={project.image || "/placeholder.svg"}
             alt={project.title}
-            className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
           />
           {/* Image overlay */}
           <div className="absolute inset-0 bg-[var(--obsidian)]/70 opacity-60 transition-opacity duration-500 group-hover:opacity-80" />

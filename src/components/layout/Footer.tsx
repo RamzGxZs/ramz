@@ -1,24 +1,11 @@
-import { Github, Linkedin, Twitter } from "lucide-react"
+import { Github, Linkedin } from "lucide-react"
 import Link from "next/link"
 import { useSmoothScroll } from "@/hooks/useScrollAnimation"
-
-const navItems = [
-  { href: "#about", label: "About" },
-  { href: "#skills", label: "Skills" },
-  { href: "#experience", label: "Experience" },
-  { href: "#education", label: "Education" },
-  { href: "#projects", label: "Projects" },
-  { href: "#contact", label: "Contact" },
-]
+import { NAV_ITEMS, SOCIALS } from "@/lib/constants"
 
 const socialLinks = [
-  { icon: Github, href: "https://github.com/RamzGxZs", label: "GitHub" },
-  {
-    icon: Linkedin,
-    href: "https://www.linkedin.com/in/moch-ramzi-daffa-putra-13738922a/",
-    label: "LinkedIn",
-  },
-  { icon: Twitter, href: "#", label: "Twitter" },
+  { icon: Github, href: SOCIALS.github, label: "GitHub" },
+  { icon: Linkedin, href: SOCIALS.linkedin, label: "LinkedIn" },
 ]
 
 export function Footer() {
@@ -41,7 +28,7 @@ export function Footer() {
 
           {/* Navigation */}
           <nav className="flex flex-wrap items-center justify-center gap-6">
-            {navItems.map((item) => (
+            {NAV_ITEMS.map((item) => (
               <button
                 key={item.href}
                 onClick={() => scrollTo(item.href.replace("#", ""))}

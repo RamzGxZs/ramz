@@ -1,5 +1,3 @@
-"use client"
-
 import { useState, useEffect } from "react"
 import { Header } from "@/components/layout/Header"
 import { Hero } from "@/components/layout/Hero"
@@ -11,6 +9,14 @@ import { Projects } from "@/components/layout/Projects"
 import { Contact } from "@/components/layout/Contact"
 import { Footer } from "@/components/layout/Footer"
 import Head from "next/head"
+import { Inter } from "next/font/google"
+import { SITE } from "@/lib/constants"
+
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-inter",
+})
 
 export default function Portfolio() {
   const [activeSection, setActiveSection] = useState("hero")
@@ -45,15 +51,9 @@ export default function Portfolio() {
   return (
     <>
       <Head>
-        <title>Ramzi | Full-Stack Software Engineer</title>
-        <meta name="description" content="Ramzi - Full-Stack Software Engineer Portfolio" />
+        <title>{SITE.title}</title>
+        <meta name="description" content={SITE.description} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
-          rel="stylesheet"
-        />
       </Head>
 
       <div

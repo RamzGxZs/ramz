@@ -2,19 +2,11 @@ import { useState, useEffect, useCallback } from "react"
 import { Button } from "@/components/ui/button"
 import { Menu, X, Download } from "lucide-react"
 import { useSmoothScroll } from "@/hooks/useScrollAnimation"
+import { NAV_ITEMS, SOCIALS } from "@/lib/constants"
 
 interface HeaderProps {
   activeSection: string
 }
-
-const navItems = [
-  { href: "#about", label: "About" },
-  { href: "#skills", label: "Skills" },
-  { href: "#experience", label: "Experience" },
-  { href: "#education", label: "Education" },
-  { href: "#projects", label: "Projects" },
-  { href: "#contact", label: "Contact" },
-]
 
 export function Header({ activeSection }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -61,7 +53,7 @@ export function Header({ activeSection }: HeaderProps) {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-8">
-          {navItems.map((item) => {
+          {NAV_ITEMS.map((item) => {
             const isActive = activeSection === item.href.substring(1)
             return (
               <button
@@ -85,7 +77,7 @@ export function Header({ activeSection }: HeaderProps) {
           })}
           <Button
             size="sm"
-            onClick={() => window.open("https://api.whatsapp.com/send?phone=62895621048269")}
+            onClick={() => window.open(SOCIALS.whatsapp)}
             className="ml-2 bg-[var(--ember)] text-white hover:bg-[var(--copper)] transition-all duration-300 magnetic-hover"
           >
             <Download className="mr-2 h-4 w-4" /> Resume
@@ -122,7 +114,7 @@ export function Header({ activeSection }: HeaderProps) {
       {mobileMenuOpen && (
         <div className="md:hidden glass animate-slide-down mx-4 mb-4 rounded-2xl p-4 shadow-depth-lg">
           <nav className="flex flex-col space-y-1">
-            {navItems.map((item, index) => {
+            {NAV_ITEMS.map((item, index) => {
               const isActive = activeSection === item.href.substring(1)
               return (
                 <button
@@ -141,7 +133,7 @@ export function Header({ activeSection }: HeaderProps) {
             })}
             <Button
               size="sm"
-              onClick={() => window.open("https://api.whatsapp.com/send?phone=62895621048269")}
+              onClick={() => window.open(SOCIALS.whatsapp)}
               className="mt-3 w-full bg-[var(--ember)] text-white hover:bg-[var(--copper)]"
             >
               <Download className="mr-2 h-4 w-4" /> Resume
