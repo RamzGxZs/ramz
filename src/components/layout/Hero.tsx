@@ -1,12 +1,13 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useState, Suspense, lazy } from "react"
 import { Button } from "@/components/ui/button"
 import { Github, Linkedin, ChevronRight } from "lucide-react"
 import Link from "next/link"
 import { useScrollAnimation } from "@/hooks/useScrollAnimation"
 import { SOCIALS } from "@/lib/constants"
-import HeroScene from "@/components/three/HeroScene"
+
+const HeroScene = lazy(() => import("@/components/three/HeroScene"))
 
 export function Hero() {
   const [isLoaded, setIsLoaded] = useState(false)
@@ -21,7 +22,9 @@ export function Hero() {
 
   return (
     <section id="hero" className="relative h-screen w-full flex items-center justify-center overflow-hidden bg-[var(--obsidian)]">
-      <HeroScene />
+      <Suspense fallback={null}>
+        <HeroScene />
+      </Suspense>
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-4xl mx-auto">

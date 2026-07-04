@@ -10,9 +10,7 @@
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.2.4",
-    "@react-three/drei": "^10.7.7",
     "@react-three/fiber": "^9.6.1",
-    "caniuse-lite": "^1.0.30001800",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.561.0",
@@ -30,6 +28,7 @@
     "@types/react-dom": "^19",
     "@types/three": "^0.185.0",
     "baseline-browser-mapping": "^2.10.41",
+    "caniuse-lite": "^1.0.30001800",
     "tailwindcss": "^4",
     "typescript": "^5"
   }
