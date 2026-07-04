@@ -8,12 +8,12 @@ A collection of skills for Claude.ai and Claude Code for senior software enginee
 
 ## OpenCode Integration
 
-OpenCode uses a **skill-driven execution model** powered by the `skill` tool and this repository's `/skills` directory.
+OpenCode uses a **skill-driven execution model** powered by the `skill` tool and `~/.config/opencode/skills/` directory.
 
 ### Core Rules
 
 - If a task matches a skill, you MUST invoke it
-- Skills are located in `skills/<skill-name>/SKILL.md`
+- Skills are located in `~/.config/opencode/skills/<skill-name>/SKILL.md`
 - Never implement directly if a skill applies
 - Always follow the skill instructions exactly (do not partially apply them)
 
@@ -69,7 +69,7 @@ This ensures OpenCode behaves similarly to Claude Code with full workflow enforc
 
 This repo has three composable layers. They have different jobs and should not be confused:
 
-- **Skills** (`skills/<name>/SKILL.md`) — workflows with steps and exit criteria. The *how*. Mandatory hops when an intent matches.
+- **Skills** (`~/.config/opencode/skills/<name>/SKILL.md`) — workflows with steps and exit criteria. The *how*. Mandatory hops when an intent matches.
 - **Personas** (`agents/<role>.md`) — roles with a perspective and an output format. The *who*.
 - **Slash commands** (`.claude/commands/*.md`) — user-facing entry points. The *when*. The orchestration layer.
 
@@ -85,6 +85,6 @@ See [docs/agents.md](docs/agents.md) for the decision matrix and [references/orc
 
 > **Before you start:** run the pre-flight checks in [CONTRIBUTING.md](CONTRIBUTING.md#before-proposing-a-new-skill), search the catalog, check open PRs (`gh pr list --state open`), confirm the idea fits [docs/skill-anatomy.md](docs/skill-anatomy.md), and justify the gap in your PR description. Most new-skill ideas overlap an existing skill or an open PR; prefer extending an existing skill over adding a near-duplicate. CONTRIBUTING.md is the single source of truth for this workflow.
 
-Skills in this repo are markdown-first: each lives at `skills/<kebab-case-name>/SKILL.md` with YAML frontmatter (`name`, `description`) and follows the section anatomy (Overview, When to Use, Process, Common Rationalizations, Red Flags, Verification). Add a `scripts/` directory only when the skill ships runnable helpers; most skills are markdown only, and there are no per-skill zip packages.
+Skills in this repo are markdown-first: each lives at `~/.config/opencode/skills/<kebab-case-name>/SKILL.md` with YAML frontmatter (`name`, `description`) and follows the section anatomy (Overview, When to Use, Process, Common Rationalizations, Red Flags, Verification). Add a `scripts/` directory only when the skill ships runnable helpers; most skills are markdown only, and there are no per-skill zip packages.
 
 For the full format, naming conventions, frontmatter rules, supporting-file thresholds, and writing principles, see [docs/skill-anatomy.md](docs/skill-anatomy.md), the single source of truth for skill structure. Do not restate that guidance here, link to it.
